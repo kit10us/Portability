@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="port">
+      <UniqueIdentifier>{1f0fcaf3-de20-420b-8542-30b5ba19d1fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="port\win">
+      <UniqueIdentifier>{46a9d56f-03f0-4364-bdc3-3c6611aeb96d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="port\sanity.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="port\win\general.h">
+      <Filter>port\win</Filter>
+    </ClInclude>
+    <ClInclude Include="port\IPlatform.h">
+      <Filter>port</Filter>
+    </ClInclude>
+    <ClInclude Include="port\win\WindowsPlatform.h">
+      <Filter>port\win</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="port\win\general.cpp">
+      <Filter>port\win</Filter>
+    </ClCompile>
+    <ClCompile Include="port\win\WindowsPlatform.cpp">
+      <Filter>port\win</Filter>
+    </ClCompile>
+    <ClCompile Include="port\IPlatform.cpp">
+      <Filter>port</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

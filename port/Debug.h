@@ -19,15 +19,29 @@
  * along with Unify.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "port/IPlatform.h"
+#include <port/sanity.h>
+#include <string>
 
-#ifdef PORT_WINDOWS
-#include "port/win/WindowsPlatform.h"
-#endif
+#if defined(PORT_WINDOWS)
 
-port::IPlatform::ptr CreatePlatform()
+#include <port/win/Windows.h>
+
+#endif // defined(PORT_WINDOWS)
+
+
+#if defined(PORT_WINDOWS)
+
+namespace port
 {
-#ifdef PORT_WINDOWS
-	return std::make_shared<port::win::Platform>();
-#endif
+	void DebugBreak()
+	{
+		::DebugBreak();
+	}
+
+	void DebugLogMessage(std::string text)
+	{
+		OutputDebugStringA(std::string(text + "\n").c_str());
+	}
 }
+
+#endif // defined(PORT_WINDOWS)

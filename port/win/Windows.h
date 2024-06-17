@@ -19,15 +19,45 @@
  * along with Unify.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "port/IPlatform.h"
 
-#ifdef PORT_WINDOWS
-#include "port/win/WindowsPlatform.h"
+#pragma once
+
+#include <port/sanity.h>
+
+#if defined(PORT_WINDOWS)
+
+#define WIN32_LEAN_AND_MEAN // For winsock.
+#include <windows.h>
+
+
+#pragma warning( push )
+#pragma warning( disable:4005 ) // Ignore "warning C4005: 'MAKEFOURCC': macro redefinition" due to mmsyscom.h(153) and dds.h(62).
+#include <atlbase.h>
+// For:
+//		CComPtr
+#pragma warning( pop )
+ 
+ // Undefine Microsoft clashing defines.
+
+#ifdef CreateWindow
+#undef CreateWindow
 #endif
 
-port::IPlatform::ptr CreatePlatform()
-{
-#ifdef PORT_WINDOWS
-	return std::make_shared<port::win::Platform>();
+#ifdef GetObject
+#undef GetObject
 #endif
-}
+
+#ifdef min
+#undef min
+#endif
+
+#ifdef max
+#undef max
+#endif
+
+#ifdef FAILED
+#undef FAILED
+#define WIN_FAILED(hr) (((HRESULT)(hr)) < 0)
+#endif
+
+#endif // defined(PORT_WINDOWS)

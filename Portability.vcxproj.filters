@@ -21,6 +21,9 @@
     <ClInclude Include="port\win\WindowsPlatform.h">
       <Filter>port\win</Filter>
     </ClInclude>
+    <ClInclude Include="port\Debug.h">
+      <Filter>port</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="port\win\general.cpp">

@@ -171,6 +171,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="port\Debug.h" />
     <ClInclude Include="port\IPlatform.h" />
     <ClInclude Include="port\sanity.h" />
     <ClInclude Include="port\win\general.h" />

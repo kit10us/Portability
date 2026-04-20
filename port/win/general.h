@@ -44,7 +44,7 @@
 #	define COMPAT_SIZE(A)				(UINT_PTR)(A)
 #	define COMPAT_PSTR(A)				(LPSTR)(UINT_PTR)(A)
 #	define COMPAT_PWSTR(A)				(LPWSTR)(UINT_PTR)(A)
-#	define COMPAT_LRESULT_TO_INT(A)		*(int*)(UINT_PTR)(A)
+#	define COMPAT_LRESULT_TO_INT(A)		(int)(UINT_PTR)(A)
 #	define COMPAT_GetWindowLong(A, B)	(UINT_PTR)(GetWindowLong(A, B))
 #	define COMPAT_GetClassInfo(A, B, C)	GetClassInfo( A, (LPSTR)(UINT_PTR)B, C )
 #	define COMPAT_GWL_HINSTANCE			GWLP_HINSTANCE

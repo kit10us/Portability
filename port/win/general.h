@@ -5,6 +5,10 @@
 
 #include <port/sanity.h>
 
+#if defined(_WIN32)
+#   define PORT_WIN32
+#endif
+
 #if defined(PORT_WINDOWS)
 #include <Windows.h>
 #include <string>

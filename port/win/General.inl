@@ -19,12 +19,6 @@
  * along with Port.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <port/win/general.h>
-#include <algorithm>
-#include <iterator>
-
-#if defined(PORT_WINDOWS)
-
 namespace port::win
 {
 #ifdef _WIN64
@@ -38,6 +32,7 @@ namespace port::win
 	}
 
 #else
+	inline
 	std::wstring ToWindowsString(std::wstring text)
 	{
 		/*
@@ -49,5 +44,3 @@ namespace port::win
 
 #endif
 }
-
-#endif // defined(PORT_WINDOWS)

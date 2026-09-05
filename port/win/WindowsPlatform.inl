@@ -19,15 +19,31 @@
  * along with Port.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "port/IPlatform.h"
+ namespace port::win
+ {
+	inline
+	std::string Platform::GetOS() const
+	{
+		return "Windows";
+	}
 
-#ifdef PORT_WINDOWS
-#include "port/win/WindowsPlatform.h"
-#endif
-
-port::IPlatform::ptr CreatePlatform()
-{
-#ifdef PORT_WINDOWS
-	return std::make_shared<port::win::Platform>();
-#endif
+	inline
+	std::string Platform::GetBuildTarget() const
+	{
+	#ifdef _DEBUG
+		return "Debug";
+	#else
+		return "Release";
+	#endif
+	}
 }
+
+namespace port
+{
+	inline
+	Platform::ptr GeneratePlatform()
+	{
+		return std::make_shared<win::Platform>();
+	}
+}
+

@@ -19,22 +19,31 @@
  * along with Port.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "port/win/WindowsPlatform.h"
+#pragma once
+
+#include <string>
+#include <memory>
+
+namespace port
+{
+	class Platform
+	{
+	public:
+		typedef std::shared_ptr<Platform> ptr;
+
+		virtual std::string GetOS() const = 0;
+		virtual std::string GetBuildTarget() const = 0;
+	};
+
+	/// <summary>
+	/// Generates a platform instance based on the target platform.
+	/// </summary>
+	/// <returns>A shared pointer to the generated platform instance.</returns>
+	//IPlatform::ptr GeneratePlatform();
+
+	Platform::ptr GeneratePlatform();	
+}
 
 #if defined(PORT_WINDOWS)
-
-std::string port::win::Platform::GetOS() const
-{
-	return "Windows";
-}
-
-std::string port::win::Platform::GetBuildTarget() const
-{
-#ifdef _DEBUG
-	return "Debug";
-#else
-	return "Release";
+	#include <port/win/WindowsPlatform.h>
 #endif
-}
-
-#endif // defined(PORT_WINDOWS)

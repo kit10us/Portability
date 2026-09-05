@@ -21,18 +21,15 @@
 
 #pragma once
 
-#include <port/sanity.h>
+#include <port/win/ValidateWindows.h>
 
 #if defined(_WIN32)
 #   define PORT_WIN32
 #endif
 
-#if defined(PORT_WINDOWS)
 #include <Windows.h>
 #include <string>
-#endif
 
-#if defined(PORT_WINDOWS)
 #if defined(PORT_WIN32)
 
 #	define COMPAT_SIZE(A)				(A)
@@ -55,19 +52,12 @@
 #	define WindowsStringPtr LPSTR
 
 #endif
-#endif
 
 namespace port::win
 {
-#if defined(PORT_WINDOWS)
 #if defined(PORT_X64)
-
 	std::string ToWindowsString(std::wstring text);
-
-#elif defined(PORT_WIN32(// Windows 32)
-
+#elif defined(PORT_WIN32)
 	std::string ToWindowsString(std::wstring text);
-
-#endif
 #endif
 }

@@ -21,13 +21,13 @@
 
 #pragma once
 
-#include "port/IPlatform.h"
+#include <port/win/ValidateWindows.h>
 
-#if defined(PORT_WINDOWS)
+#include "port/Platform.h"
 
 namespace port::win
 {
-	class Platform : public IPlatform
+	class Platform : public port::Platform
 	{
 	public: // class IPlatform
 		virtual std::string GetOS() const;
@@ -35,4 +35,4 @@ namespace port::win
 	};
 }
 
-#endif // defined(PORT_WINDOWS)
+#include <port/win/WindowsPlatform.inl>

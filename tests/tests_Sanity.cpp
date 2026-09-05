@@ -19,41 +19,29 @@
  * along with Unify.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <gtest/gtest.h>
 
-#pragma once
+#include <port/Port.h>
 
-#include <port/win/ValidateWindows.h>
+class SanityTests : public ::testing::Test
+{ 
+protected:
+    void SetUp() override
+    {
+        // Code here will be called immediately after the constructor (right before each test).
+    }
 
-#define WIN32_LEAN_AND_MEAN // For winsock.
-#include <windows.h>
+    void TearDown() override
+    {
+        // Code here will be called immediately after each test (right before the destructor).
+    }  
+};
 
-
-#pragma warning( push )
-#pragma warning( disable:4005 ) // Ignore "warning C4005: 'MAKEFOURCC': macro redefinition" due to mmsyscom.h(153) and dds.h(62).
-#include <atlbase.h>
-// For:
-//		CComPtr
-#pragma warning( pop )
- 
- // Undefine Microsoft clashing defines.
-
-#ifdef CreateWindow
-#undef CreateWindow
-#endif
-
-#ifdef GetObject
-#undef GetObject
-#endif
-
-#ifdef min
-#undef min
-#endif
-
-#ifdef max
-#undef max
-#endif
-
-#ifdef FAILED
-#undef FAILED
-#define WIN_FAILED(hr) (((HRESULT)(hr)) < 0)
-#endif
+/// @brief
+/// Verify sanity checks are working. 
+/// This is a test to ensure that the sanity checks are functioning correctly and that the testing framework is set up properly.
+TEST_F(SanityTests, SanityCheck)
+{
+    int x {};
+    EXPECT_EQ(x, 0);
+}

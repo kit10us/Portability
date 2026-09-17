@@ -55,5 +55,5 @@
 
 #ifdef FAILED
 #undef FAILED
-#define WIN_FAILED(hr) (((HRESULT)(hr)) < 0)
+#define FAILED(hr) (((HRESULT)(hr)) < 0)
 #endif

@@ -23,10 +23,6 @@
 
 #include <port/win/ValidateWindows.h>
 
-#if defined(_WIN32)
-#   define PORT_WIN32
-#endif
-
 #include <Windows.h>
 #include <string>
 

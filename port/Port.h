@@ -1,5 +1,5 @@
 #pragma once
-#if !defined(_PORT_)
+#if !defined(_PORT_) && !defined(PORT_WINDOWS) && !defined(PORT_LINUX)
 #define _PORT_
 
 // Determining the platform based on predefined macros.
